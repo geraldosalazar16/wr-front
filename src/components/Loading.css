@@ -1,0 +1,15 @@
+
+.loading-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+}
+
+.react-spinner-loader-swing, .react-spinner-loader-shadow {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,30 @@
+.layout {
+    width: 100%;
+    display: flex;
+    position: relative;
+    min-width: fit-content;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.authenticated-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.hidden {
+    display: none;
+}

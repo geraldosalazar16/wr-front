@@ -1,0 +1,16 @@
+.app-bar {
+    z-index: 9999;
+    flex-grow: 1;
+}
+
+.menuButton {
+    margin-right: 16px;
+}
+
+.logo {
+    width: 20%;
+}
+
+.title {
+    flex-grow: 1;
+}

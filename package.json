@@ -1,0 +1,64 @@
+{
+  "name": "p1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/moment": "1.3.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.49",
+    "@material-ui/pickers": "^3.2.10",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@trendmicro/react-sidenav": "^0.5.0",
+    "axios": "^0.19.2",
+    "clsx": "^1.1.0",
+    "csvtojson": "^2.0.10",
+    "material-table": "^1.57.2",
+    "moment": "2.24.0",
+    "react": "^16.12.0",
+    "react-date-picker": "^7.10.0",
+    "react-dom": "^16.12.0",
+    "react-google-charts": "^3.0.15",
+    "react-js-pagination": "^3.0.3",
+    "react-loader-spinner": "^3.1.5",
+    "react-modal": "^3.11.1",
+    "react-promise-tracker": "^2.0.5",
+    "react-reactive-form": "^1.0.32",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-switch": "^5.0.1",
+    "react-toastify": "^5.5.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^0.0.0-d7382b6c4"
+  }
+}

@@ -1,0 +1,31 @@
+.root {
+    display: flex;
+}
+
+.nested {
+    padding-left: 32px !important;
+}
+
+.drawer {
+    width: 300px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    z-index: 1000;
+}
+  
+.drawer-open {
+    width: 300px;
+    /*transition: width 1s ease-out;*/
+}
+  
+.drawer-close {
+    transition: 'width 1s';
+    overflow-x: hidden;
+    width: 50px;
+    /*transition: width 1s ease-in;*/
+}
+  
+.content {
+    flex-grow: 1;
+    padding: 8px,
+}
