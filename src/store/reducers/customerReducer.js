@@ -93,6 +93,25 @@ const customerReducer = (state = initState, action) => {
                 message: 'User deleted',
                 customers: state.customers.filter(c => c.id !== action.customer.id),
             }
+        case 'DISABLE_CUSTOMER_ERROR':
+            return {
+                ...state,
+                error: action.error,
+                message: null
+            }
+        case 'DISABLE_CUSTOMER_SUCCESS':
+            return {
+                ...state,
+                currentCustomer: action.customer,
+                listContacts: action.listContacts,
+                customers: state.customers.map(c => c.id !== action.customer.id ? c : action.customer),
+                error: null,
+                message: 'User disable',
+                //customers: state.customers.filter(c => c.id == action.customer.id),
+
+
+
+            }
         case 'UPLOAD_CUSTOMER_SUCCESS':
             return {
                 ...state,

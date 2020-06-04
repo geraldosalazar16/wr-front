@@ -39,7 +39,7 @@ const statuschange = async (customer) => {
     const response = await request('post', route, {
         customerId: customer.id,
         customerStatus: 0
-    });
+});
     return handleResponse(response);
 }
 

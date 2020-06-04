@@ -12,7 +12,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import TablePagination from "@material-ui/core/TablePagination";
-import { del, listByBranch, startCustomerEdit, upload } from "../store/actions/customerActions";
+import { del, statuschange, listByBranch, startCustomerEdit, upload } from "../store/actions/customerActions";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import Typography from "@material-ui/core/Typography";
@@ -155,6 +155,11 @@ export function CustomerManagement(props) {
         await dispatch(del(row));
     }
 
+    const customerStatusChange = async (row) => {
+        await dispatch(statuschange(row));
+        
+    }
+
     useEffect(() => {
         dispatch(listByBranch(branchId))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -260,6 +265,7 @@ export function CustomerManagement(props) {
                                                     <div>
                                                     <Icon className={classes.icon} color="primary" onClick={(e) => editCustomer(row)}>edit</Icon>
                                                     <Icon className={classes.icon} color="error" onClick={(event) => deleteCustomer(row)}>delete</Icon>
+                                                    <Icon className={classes.icon} color="disabled" onClick={(event) => customerStatusChange(row)}>toggle</Icon>
                                                     </div>
                                                 )}
                                                 {user.roleId !== 3 && (

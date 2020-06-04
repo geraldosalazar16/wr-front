@@ -313,6 +313,29 @@ export const del = (customer) => {
     }
 }
 
+export const statuschange = (customer) => {
+    return (dispatch) => {
+        dispatch({ type: 'DISABLE_CUSTOMER_REQUEST' })
+        customerService.statuschange(customer)
+            .then(result => {
+                dispatch({
+                    type: 'DISABLE_CUSTOMER_SUCCESS',
+                    customer
+                });
+                dispatch(displayMessage('Customers disable'))
+                list(null)
+            })
+            .catch(error => {
+                const errorMessage = handleAxiosError(error)
+                dispatch({
+                    type: 'DISABLE_CUSTOMER_ERROR',
+                    error: errorMessage
+                });
+                dispatch(displayError(errorMessage));
+            })
+    }
+}
+
 export const upload = (uploadCustomer, branchId) => {
     return (dispatch) => {
         dispatch({ type: 'UPLOAD_CUSTOMER_REQUEST' })
