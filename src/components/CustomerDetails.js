@@ -69,6 +69,9 @@ const useStyles = theme => ({
             margin: '16px',
             width: '100%'
         },
+        '& .MuiToolbar-root.MuiToolbar-regular.MTableToolbar-root-318.MuiToolbar-gutters': {
+            minHeight: '0 !important'
+        },
     },
     paper: {
         marginTop: '16px',

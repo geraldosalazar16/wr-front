@@ -283,7 +283,7 @@ class BranchEdit extends Component {
                                     <Grid item xs={6}>
                                         <FieldControl
                                             strict={false}
-                                            name="designationId"
+                                            name="stateId"
                                             render={this.SelectState}
                                         />
                                     </Grid>

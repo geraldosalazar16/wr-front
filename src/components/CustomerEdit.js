@@ -146,33 +146,6 @@ function a11yProps(index) {
     };
 }
 
-const contacts = [
-    {
-        id: 1,
-        firstName: '',
-        lastName: '',
-        email: '',
-        contactNo: '',
-        dob: ''
-    },
-    {
-        id: 2,
-        firstName: '',
-        lastName: '',
-        email: '',
-        contactNo: '',
-        dob: ''
-    },
-    {
-        id: 3,
-        firstName: '',
-        lastName: '',
-        email: '',
-        contactNo: '',
-        dob: ''
-    }
-];
-
 class CustomerEdit extends Component {
 
     state = {
@@ -345,19 +318,19 @@ class CustomerEdit extends Component {
             return <Redirect to='/login' />
         }
         const onRowAdd = this.props.listContacts && this.props.listContacts.length === 3 ?
-        undefined : newData => {
-            return new Promise(resolve => {
-                /*
-                const contacts = [...this.state.contacts];
-                const data = Object.assign({}, newData, { id: contacts.length + 1 })
-                contacts.push(data);
-                this.handleUpdateContact(contacts);
-                */
-                const data = Object.assign({}, newData, { id: contacts.length + 1 });
-                this.props.addCustomerContact(data);
-                resolve();
-            })
-        };
+            undefined : newData => {
+                return new Promise(resolve => {
+                    let formatedDate;
+                    if (typeof (newData.dob.format) !== 'function') {
+                        formatedDate = prettifyDate(newData.dob);
+                    } else {
+                        formatedDate = prettifyDate(newData.dob.format('YYYY-MM-DD'));
+                    }
+                    newData.dob = formatedDate;
+                    this.props.addCustomerContact(newData);
+                    resolve();
+                })
+            };
         return (
             <div className={classes.root}>
                 <Grid container spacing={3}>
@@ -600,15 +573,8 @@ class CustomerEdit extends Component {
                                     onRowAdd: onRowAdd,
                                     onRowUpdate: (newData, oldData) => {
                                         return new Promise(resolve => {
-                                            /*
-                                            const contacts = [...this.state.contacts];
-                                            const index = contacts.findIndex(c => c.id === oldData.id);
-                                            contacts[index] = newData;
-                                            this.handleUpdateContact(contacts);
-                                            */
-                                            // const index = this.props.listContacts.findIndex(c => c.id === oldData.id);
                                             let formatedDate;
-                                            if (typeof(newData.dob.format) !== 'function') {
+                                            if (typeof (newData.dob.format) !== 'function') {
                                                 formatedDate = prettifyDate(newData.dob);
                                             } else {
                                                 formatedDate = prettifyDate(newData.dob.format('YYYY-MM-DD'));
@@ -620,12 +586,6 @@ class CustomerEdit extends Component {
                                     },
                                     onRowDelete: oldData => {
                                         return new Promise(resolve => {
-                                            /*
-                                            const contacts = [...this.state.contacts];
-                                            const index = contacts.findIndex(c => c.id === oldData.id);
-                                            contacts.splice(index, 1);
-                                            this.handleUpdateContact(contacts);
-                                            */
                                             const contact = this.props.listContacts.find(c => c.id === oldData.id);
                                             this.props.deleteCustomerContact(contact);
                                             resolve();
@@ -636,12 +596,12 @@ class CustomerEdit extends Component {
                         />
                     </TabPanel>
                     <TabPanel value={this.state.detailsTab} index={1}>
-                        
+
                     </TabPanel>
                 </Paper>
-                <Button 
-                    variant="contained" 
-                    color="primary" size="large" 
+                <Button
+                    variant="contained"
+                    color="primary" size="large"
                     startIcon={<SaveIcon />}
                     className={classes.saveBtn}
                     onClick={this.submit}

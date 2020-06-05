@@ -6,6 +6,7 @@ import {
     listUsers,
     editBranchUser
 } from '../store/actions/branchActions'
+import { changePasswordLogedIn } from '../store/actions/authActions'
 
 
 import {FieldControl, FieldGroup, FormBuilder, Validators} from "react-reactive-form";
@@ -326,6 +327,10 @@ class EmployeesEdit extends Component {
 
     setCurrentTab = tab => {
         this.setState({currentTab: tab});
+    }
+
+    changePasword = () => {
+        this.props.changePassword(this.props.branchUser.userId, this.pwdForm.value.password);
     }
 
     submit = (evt) => {
@@ -759,6 +764,7 @@ const mapDispatchToProps = dispatch => {
         reloadBranches: () => dispatch(list(true)),
         reloadUsers: (userId, branch) => dispatch(listUsers(userId, branch)),
         editUser: (user) => dispatch(editBranchUser(user)),
+        changePassword: (userId, password) => dispatch(changePasswordLogedIn(userId, password))
     }
 }
 

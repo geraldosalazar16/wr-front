@@ -156,7 +156,7 @@ class EmployeeCreate extends Component {
     componentWillUnmount() {
         this.userForm.get('partnerId').valueChanges.unsubscribe();
     }
-
+ 
     SelectState = ({ handler, touched, hasError, meta, onChange, value }) => {
         const requiredError = touched && hasError("required") && `${meta.label || 'Field'} required`;
         const error = requiredError ? true : false;
@@ -166,7 +166,7 @@ class EmployeeCreate extends Component {
                 className="field"
                 error={error}
                 id={meta.label}
-                label={meta.label}
+                label={'States'}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -194,7 +194,7 @@ class EmployeeCreate extends Component {
                 className="field"
                 error={error}
                 id={meta.label}
-                label={meta.label}
+                label={'Designations'}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -304,24 +304,6 @@ class EmployeeCreate extends Component {
                                                 required: true,
                                                 className: 'customermanagement_inputbox',
                                                 placeholder: 'Enter last name'
-                                            }
-                                        }
-                                    />
-                                </Grid>
-
-                                <Grid item xs={6}>
-                                    <FieldControl
-                                        name="partnerId"
-                                        render={Select}
-                                        meta={
-                                            {
-                                                label: "Partner",
-                                                required: true,
-                                                icon: <BusinessCenterIcon />,
-                                                options: [
-                                                    <MenuItem key={1} value={1}>Accountants &/or Tax Agents</MenuItem>,
-                                                    <MenuItem key={2} value={2}>Real Estate Agents</MenuItem>
-                                                ]
                                             }
                                         }
                                     />
@@ -533,7 +515,9 @@ class EmployeeCreate extends Component {
                                         }
                                     />
                                 </Grid>
+                                <Grid item xs={6}>
 
+                                </Grid>
                                 <Button variant="contained" color="primary" size="large"
                                     startIcon={<SaveIcon />}
                                     disabled={invalid}

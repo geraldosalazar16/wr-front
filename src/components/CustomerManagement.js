@@ -87,6 +87,7 @@ export function CustomerManagement(props) {
     const [rows, setRows] = useState([]);
     const [fullRows, setFullRows] = useState([]);
 
+    
     if (!user) {
         useHistory.push("/login");
     }
@@ -191,6 +192,16 @@ export function CustomerManagement(props) {
                             >
                                 &nbsp;Upload CSV file
                                 </Button>
+                        </div>
+                    ) : <div></div>}
+                    {user.roleId === 2 ? (
+                        <div>
+                            <Button variant="contained" color="primary" size="large"
+                                startIcon={<i className="fas fa-long-arrow-alt-left"></i>}
+                                component={Link} className={classes.btn}
+                                to={"/branch-management"}>
+                                &nbsp;Back to Branch List
+                            </Button>
                         </div>
                     ) : <div></div>}
                 </Grid>
