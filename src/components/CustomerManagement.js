@@ -86,7 +86,7 @@ export function CustomerManagement(props) {
     let history = useHistory();
     const [rows, setRows] = useState([]);
     const [fullRows, setFullRows] = useState([]);
-
+    
     if (!user) {
         useHistory.push("/login");
     }
@@ -256,16 +256,19 @@ export function CustomerManagement(props) {
                                                 const value = row[column.id];
                                                 return (
                                                     <TableCell key={column.id} align={column.align}>
-                                                        {value}
+                                                        {8} 
+                                                         {/* {value}  */}
                                                     </TableCell>
                                                 );
                                             })}
                                             <TableCell>
                                                 {user.roleId === 3 && (
                                                     <div>
-                                                    <Icon className={classes.icon} color="primary" onClick={(e) => editCustomer(row)}>edit</Icon>
-                                                    <Icon className={classes.icon} color="error" onClick={(event) => deleteCustomer(row)}>delete</Icon>
-                                                    <Icon className={classes.icon} color="disabled" onClick={(event) => customerStatusChange(row)}>toggle</Icon>
+                                                    <Icon id="btnedit" className={classes.icon} color="primary"  onClick={(e) => editCustomer(row)}>edit</Icon>
+                                                    <Icon id="btndelete" className={classes.icon} color="error" onClick={(event) => deleteCustomer(row)}>delete</Icon>
+                                                    <Icon id="btntoggle" className={classes.icon} color="disabled" 
+                                                            onClick={(event) => customerStatusChange(row) }>delete</Icon>
+                                                             
                                                     </div>
                                                 )}
                                                 {user.roleId !== 3 && (

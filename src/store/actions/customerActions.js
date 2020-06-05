@@ -323,7 +323,7 @@ export const statuschange = (customer) => {
                     customer
                 });
                 dispatch(displayMessage('Customers disable'))
-                list(null)
+                //list(null)
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)

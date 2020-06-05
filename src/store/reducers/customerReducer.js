@@ -106,12 +106,8 @@ const customerReducer = (state = initState, action) => {
                 listContacts: action.listContacts,
                 customers: state.customers.map(c => c.id !== action.customer.id ? c : action.customer),
                 error: null,
-                message: 'User disable',
-                //customers: state.customers.filter(c => c.id == action.customer.id),
-
-
-
-            }
+                message: 'Customer disabled successfully'
+             }
         case 'UPLOAD_CUSTOMER_SUCCESS':
             return {
                 ...state,

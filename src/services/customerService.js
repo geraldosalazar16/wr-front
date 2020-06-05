@@ -38,7 +38,8 @@ const statuschange = async (customer) => {
     let route = `${apiURL}/api/customer/customerstatuschange`;
     const response = await request('post', route, {
         customerId: customer.id,
-        customerStatus: 0
+        customerStatus: 0,
+               
 });
     return handleResponse(response);
 }
