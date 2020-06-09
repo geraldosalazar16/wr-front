@@ -3,6 +3,7 @@ import authService from '../../services/authService';
 import { displayError, displayMessage } from '../../services/toastService'
 import branchService from "../../services/branchService";
 
+
 export const list = (noMessage) => {
     return (dispatch) => {
         const user = authService.getCurrentUser();
@@ -95,9 +96,10 @@ export const create = (branch, state) => {
                 }
                 dispatch({
                     type: 'BRANCH_CREATE_SUCCESS',
+                    
                     newBranch
                 });
-                dispatch(displayMessage('Branch created'))
+                //dispatch(displayMessage('Branch created'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -121,7 +123,7 @@ export const update = (branch) => {
                     type: 'BRANCH_UPDATE_SUCCESS',
                     branch
                 });
-                dispatch(displayMessage('Branch updated'))
+                //dispatch(displayMessage('Branch updated'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -144,7 +146,7 @@ export const deleteBranch = (branch) => {
                     type: 'BRANCH_DELETE_SUCCESS',
                     branch
                 });
-                dispatch(displayMessage('Branch deleted'))
+                //dispatch(displayMessage('Branch deleted'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -248,7 +250,7 @@ export const listUsers = (branchId) => {
                     type: 'BRANCH_USERS_LIST_SUCCESS',
                     users
                 });
-                dispatch(displayMessage('Branchs Users listed successfully'))
+                //dispatch(displayMessage('Branchs Users listed successfully'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -281,7 +283,7 @@ export const createBranchUser = (user, state) => {
                     type: 'CREATE_BRANCH_USER_SUCCESS',
                     newUser
                 });
-                dispatch(displayMessage('Branch user created'))
+                //dispatch(displayMessage('Branch user created'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -312,7 +314,7 @@ export const editBranchUser = (user) => {
                     type: 'EDIT_BRANCH_USER_SUCCESS',
                     user
                 });
-                dispatch(displayMessage('Branch user updated'))
+                //dispatch(displayMessage('Branch user updated'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -341,7 +343,7 @@ export const deleteBranchUser = user => {
                     type: 'DELETE_BRANCH_USER_SUCCESS',
                     user
                 });
-                dispatch(displayMessage('Branch user deleted'))
+                //dispatch(displayMessage('Branch user deleted'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -375,7 +377,7 @@ export const changePasswordBranchUser = (userId, newPassword) => {
                     type: 'CHANGE_PASSWORD_BU_SUCCESS',
                     message: result.res
                 });
-                dispatch(displayMessage('Password updated'))
+                //dispatch(displayMessage('Password updated'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -424,7 +426,7 @@ export const branchUserAssign = (userList) => {
                 dispatch({
                     type: 'BRANCH_USER_ASSIGN_SUCCESS',
                 })
-                dispatch(displayMessage('Users assign'));
+                //dispatch(displayMessage('Users assign'));
             });
         }).catch(error => {
             const errorMessage = handleAxiosError(error)
@@ -445,7 +447,7 @@ export const branchUserDelete = (userId) => {
                 type: 'BRANCH_USER_DELETE_SUCCESS',
                 userId
             })
-            dispatch(displayMessage('Users delete'));
+            //dispatch(displayMessage('Users delete'));
         }).catch(error => {
             const errorMessage = handleAxiosError(error)
             dispatch({

@@ -48,7 +48,8 @@ class BranchCreate extends Component {
 
     state = {
         states: [],
-        loading: true
+        loading: true,
+        toList:false
     }
 
     branchForm = FormBuilder.group({
@@ -81,6 +82,7 @@ class BranchCreate extends Component {
             const states = result.map(o => <MenuItem key={o.id} value={o.id}>{o.name}</MenuItem>);
             this.setState({
                 loading: false,
+                toList:false,
                 states
             });
         });
@@ -91,6 +93,11 @@ class BranchCreate extends Component {
         newBranch.partnerId = this.props.user.userId;
         newBranch.businessId = this.props.user.businessId;
         this.props.createBranch(this.branchForm.value);
+        this.setState({
+            toList:true,
+            
+        });
+               
     }
 
     SelectState = ({ handler, touched, hasError, meta, onChange, value }) => {
@@ -152,6 +159,13 @@ class BranchCreate extends Component {
         }
         if (this.state.loading) {
             return <SecondaryLoading></SecondaryLoading>
+        }
+        if (this.state.toList ){
+            return (
+                <Redirect refresh = {true} to="/branch-management"/>
+                
+                    )
+
         }
         return (
             <div className={classes.root}>

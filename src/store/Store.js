@@ -9,7 +9,7 @@ const initialState = {}
 const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk,)
 );
 
 // Load here initial states from API

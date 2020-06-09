@@ -59,6 +59,7 @@ const MyDatePicker = ({ handler, touched, hasError, meta, onChange, value }) => 
                     format={"MM/DD/YYYY"}
                     value={value}
                     onChange={onChange}
+                    disableOpenOnEnter
                     animateYearScrolling={false}
                     autoOk={true}
                     clearable
@@ -78,6 +79,7 @@ const ContactDatePicker = ({ value, onChange }) => {
                     format={"MM/DD/YYYY"}
                     value={value}
                     onChange={onChange}
+                    disableOpenOnEnter
                     animateYearScrolling={false}
                     autoOk={true}
                     clearable
@@ -161,8 +163,8 @@ class CustomerEdit extends Component {
             {
                 title: 'Date of Birth',
                 field: 'dob',
-                editComponent: ContactDatePicker
-            },
+                type: 'date'
+            }, 
         ],
         contacts: [],
         checked: false,
@@ -187,7 +189,7 @@ class CustomerEdit extends Component {
             Validators.minLength(10),
             Validators.pattern('^[0-9]+$')
         ])],
-        dob: ['', Validators.required],
+        dob: [null, Validators.required],
         gender: ['', Validators.required],
         countryId: [1], // 1 stands for Australia, as default
         noOfProperties: ['', Validators.compose([

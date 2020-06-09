@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { Component} from 'react'
+import { Link, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { create } from '../store/actions/customerActions'
 import CustomerImage from './CustomerImage';
@@ -13,17 +13,15 @@ import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from "@material-ui/core/Paper";
-
 import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
 import MomentUtils from "@date-io/moment";
 import {
     MuiPickersUtilsProvider,
     DatePicker
-} from "@material-ui/pickers";
+} from "@material-ui/pickers";  
 
-const MyDatePicker = ({ handler, touched, hasError, meta, onChange, value }) => {
+const MyDatePicker = ({ handler, touched, hasError, meta, value, onChange}) => {
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <Grid container item xs={12}>
@@ -82,8 +80,8 @@ class CustomerCreate extends Component {
     state = {
         customer: null,
         currentImage: undefined,
-        formFilled: false
-    }
+        formFilled: false,
+            }
 
     form = FormBuilder.group({
         customerTitle: ['', Validators.required],
@@ -100,7 +98,7 @@ class CustomerCreate extends Component {
             Validators.minLength(10),
             Validators.pattern('^[0-9]+$')
         ])],
-        dob: [new Date(), Validators.required],
+        dob: [null, Validators.required],
         gender: ['', Validators.required],
         countryId: [1], // 1 stands for Australia, as default
         noOfProperties: ['', Validators.compose([
@@ -145,12 +143,13 @@ class CustomerCreate extends Component {
             formatedDate = `${year}-${month}-${day}`;
         } else {
             formatedDate = customer.dob.format('YYYY-MM-DD');
-        }
+        } 
         customer.dateOfBirth = formatedDate;
         customer.image = this.state.currentImage;
         customer.branchId = this.props.branchId
         this.props.createCustomer(customer);
-    }
+                         
+    } 
 
     handleImageChange = (image) => {
         this.setState({ currentImage: image });
@@ -364,7 +363,8 @@ class CustomerCreate extends Component {
                                         <Button variant="contained" color="primary" size="large"
                                             startIcon={<SaveIcon />}
                                             disabled={invalid}
-                                            onClick={this.submit}>
+                                            onClick={this.submit}
+                                            >
                                             &nbsp;Save
                                         </Button>
                                     </Grid>

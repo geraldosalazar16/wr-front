@@ -3,6 +3,8 @@ import { handleAxiosError } from '../../services/utilsService'
 import authService from '../../services/authService'
 import { displayError, displayMessage } from '../../services/toastService'
 import { prettifyDate } from '../../services/utilsService'
+import React, { Component} from 'react'
+import { Link, Redirect} from 'react-router-dom'
 
 export const list = () => {
     return (dispatch) => {
@@ -98,9 +100,11 @@ export const listByBranch = (branchId) => {
             })
             dispatch({
                 type: 'BRANCH_CUSTOMER_LIST_SUCCESS',
-                customers
+                customers,
+                
             });
             // dispatch(displayMessage('Customers listed successfully'))
+           
         })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -133,7 +137,9 @@ export const create = (customer) => {
                 dispatch({
                     type: 'CUSTOMER_CREATE_SUCCESS',
                     newCustomer
+                  
                 });
+               
                 const user = authService.getCurrentUser();
                 let promise;
                 /**
@@ -179,7 +185,7 @@ export const create = (customer) => {
                             type: 'CUSTOMER_LIST_SUCCESS',
                             customers
                         });
-                        dispatch(displayMessage('Customer created'))
+                        //dispatch(displayMessage('Customer created'))
                     })
                     .catch(error => {
                         const errorMessage = handleAxiosError(error)
@@ -260,7 +266,7 @@ export const update = (customer) => {
                             currentCustomer: customer,
                             listContacts: customer.contacts
                         });
-                        dispatch(displayMessage('Customer updated'))
+                        //dispatch(displayMessage('Customer updated'))
                     })
                     .catch(error => {
                         const errorMessage = handleAxiosError(error)
@@ -299,13 +305,36 @@ export const del = (customer) => {
                     type: 'DELETE_CUSTOMER_SUCCESS',
                     customer
                 });
-                dispatch(displayMessage('Customers deleted'))
+                //dispatch(displayMessage('Customers deleted'))
                 list(null)
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
                 dispatch({
                     type: 'DELETE_CUSTOMER_ERROR',
+                    error: errorMessage
+                });
+                dispatch(displayError(errorMessage));
+            })
+    }
+}
+
+export const statuschange = (customer) => {
+    return (dispatch) => {
+        dispatch({ type: 'DISABLE_CUSTOMER_REQUEST' })
+        customerService.statuschange(customer)
+            .then(result => {
+                dispatch({
+                    type: 'DISABLE_CUSTOMER_SUCCESS',
+                    customer
+                });
+                //dispatch(displayMessage('Customers disable'))
+                list(null)
+            })
+            .catch(error => {
+                const errorMessage = handleAxiosError(error)
+                dispatch({
+                    type: 'DISABLE_CUSTOMER_ERROR',
                     error: errorMessage
                 });
                 dispatch(displayError(errorMessage));

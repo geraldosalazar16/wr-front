@@ -318,6 +318,7 @@ export default function CustomerForm({
 
     function eventSubmitCustomer() {
         submit(form.value);
+        
     }
 
     return (

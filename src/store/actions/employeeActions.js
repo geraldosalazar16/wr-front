@@ -69,7 +69,7 @@ export const createBranchUser = (user, state) => {
                     type: 'CREATE_EMPLOYEE_SUCCESS',
                     newUser
                 });
-                dispatch(displayMessage('Employee created'))
+                //dispatch(displayMessage('Employee created'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -100,7 +100,7 @@ export const editBranchUser = (user) => {
                     type: 'EDIT_EMPLOYEE_SUCCESS',
                     user
                 });
-                dispatch(displayMessage('Employee updated'))
+                //dispatch(displayMessage('Employee updated'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -129,7 +129,7 @@ export const deleteBranchUser = user => {
                     type: 'DELETE_EMPLOYEE_SUCCESS',
                     user
                 });
-                dispatch(displayMessage('Employee deleted'))
+                //dispatch(displayMessage('Employee deleted'))
             })
             .catch(error => {
                 const errorMessage = handleAxiosError(error)
@@ -163,7 +163,7 @@ export const changePasswordBranchUser = (userId, newPassword) => {
                 type: 'CHANGE_PASSWORD_EMP_SUCCESS',
                 message: result.res
             });
-            dispatch(displayMessage('Password updated'))
+            //dispatch(displayMessage('Password updated'))
         })
         .catch(error => {
             const errorMessage = handleAxiosError(error)

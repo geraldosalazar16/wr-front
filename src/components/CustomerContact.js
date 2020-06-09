@@ -28,7 +28,7 @@ export default class CustomerContact extends Component {
             Validators.maxLength(10),
             Validators.pattern('^[0-9]+$')
         ])],
-        dob: ['', Validators.required],
+        dob: [null, Validators.required],
     });
 
     componentDidMount() {
@@ -47,7 +47,7 @@ export default class CustomerContact extends Component {
         this.form.get('contactNo').valueChanges.subscribe((cn) => {
             update(this.form.value);
         });
-        this.form.get('dob').valueChanges.subscribe((dob) => {
+       this.form.get('dob').valueChanges.subscribe((dob) => {
             update(this.form.value);
         });
     }
